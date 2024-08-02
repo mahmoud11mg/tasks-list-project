@@ -2,6 +2,9 @@ import Link from "next/link"
 import prisma from "@/utils/db";
 import StatusBage from "@/components/StatusBage";
 
+export const dynamic = "force-dynamic"; // Auto relod  and page dynamic
+// export const revalidate = 10; // relod  10 seconds  and page static
+
 const HomePage = async () => {
   const task = await prisma.task.findMany();
 
