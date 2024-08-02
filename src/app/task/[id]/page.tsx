@@ -3,6 +3,7 @@ import StatusBage from "@/components/StatusBage";
 import Link from "next/link";
 
 import { notFound } from 'next/navigation'
+import { deleteTask } from "@/utils/actions";
 
 interface TaskDetailsPageProps {
     params: { id: string }
@@ -27,11 +28,11 @@ const TaskDetailsPage = async ({ params }: TaskDetailsPageProps) => {
                         Edit
                     </Link>
 
-                    <form action="" className="">
+                    <form action={deleteTask} className="">
+                        <input type="hidden" name="id" value={task.id} />
                         <button
                             type="submit"
-                            className="bg-red-700 hover:bg-red-600 transition-colors rounded-lg p-3 py-1 px-2 text-xl"
-                        >
+                            className="bg-red-700 hover:bg-red-600 transition-colors rounded-lg p-3 py-1 px-2 text-xl">
                             Delete</button>
                     </form>
                 </div>
