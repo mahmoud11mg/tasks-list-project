@@ -1,7 +1,6 @@
 import prisma from "@/utils/db";
 import StatusBage from "@/components/StatusBage";
 import Link from "next/link";
-
 import { notFound } from 'next/navigation'
 import { deleteTask } from "@/utils/actions";
 
