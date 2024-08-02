@@ -32,11 +32,8 @@ export async function createTask({ title, description }: CreateTaskDto) {
       console.error("Error creating task:", error.message, error.stack);
       throw new Error("Could not Create The Task, please try again");
    }
-   
-   
-   
    // revalidatePath("/");
-   // redirect("/");
+   redirect("/");
 }
 
 
