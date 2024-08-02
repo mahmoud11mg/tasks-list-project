@@ -11,14 +11,25 @@ const AddTaskForm = () => {
     const clientAction = async (formData: FormData) => {
         const title = formData.get("title")?.toString();
         const description = formData.get("description")?.toString();
-
+     
+        console.log("Form data:", { title, description });
+     
         const validation = createTaskSchema.safeParse({ title, description });
         if (!validation.success) {
-            return toast.error(validation.error.errors[0].message, { autoClose: 1000 });
+           return toast.error(validation.error.errors[0].message, { autoClose: 1000 });
         }
-
-        await createTask({ title, description } as CreateTaskDto);
-    }
+     
+        try {
+           console.log("Creating task...");
+           await createTask({ title, description } as CreateTaskDto);
+           console.log("Task created successfully");
+           toast.success("Task created successfully!", { autoClose: 1000 });
+        } catch (error: any) {
+           console.error("Error in client action:", error.message, error.stack);
+           toast.error(error.message || "Failed to create task", { autoClose: 1000 });
+        }
+     }
+     
 
     return (
         <form action={clientAction} className="flex flex-col gap-6">
